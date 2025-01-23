@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 
 const PostForm = ({ onSubmit, initialData = {} }) => {
+    const [id, setId] = useState(initialData.id || null); // Auto-incremented, no input field
+    const [author, setAuthor] = useState(initialData.author || ''); // New field for author
     const [title, setTitle] = useState(initialData.title || '');
     const [content, setContent] = useState(initialData.content || '');
     const [cover, setCover] = useState(initialData.cover || '');
+    const [date, setDate] = useState(initialData.date || new Date().toISOString().slice(0, 10)); // Default to today
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!title || !content || !cover) {
+        if (!author || !title || !content || !cover) {
             alert('All fields are required!');
             return;
         }
-        onSubmit({ title, content, cover });
+        onSubmit({ id, author, title, content, cover, date });
     };
 
     return (
         <form onSubmit={handleSubmit} className="container mx-auto max-w-lg">
+            <div className="mb-4">
+                <label className="block text-sm font-bold mb-2">Author</label>
+                <input
+                    type="text"
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                    className="w-full border rounded p-2"
+                />
+            </div>
             <div className="mb-4">
                 <label className="block text-sm font-bold mb-2">Title</label>
                 <input
@@ -39,6 +51,15 @@ const PostForm = ({ onSubmit, initialData = {} }) => {
                     type="text"
                     value={cover}
                     onChange={(e) => setCover(e.target.value)}
+                    className="w-full border rounded p-2"
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-sm font-bold mb-2">Date</label>
+                <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
                     className="w-full border rounded p-2"
                 />
             </div>
