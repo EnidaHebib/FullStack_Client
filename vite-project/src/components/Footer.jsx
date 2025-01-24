@@ -1,11 +1,11 @@
 import React from "react";
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="bg-gray-200 text-gray-600 text-center py-4">
-      <p>&copy; 2025 Travel Blog. All rights reserved.</p>
+    <footer className="bg-gray-800 text-white text-center p-4">
+      © 2025 Travel Blog. All rights reserved.
     </footer>
   );
-};
+}
 
 export default Footer;
