@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const PostForm = ({ onSubmit, initialData = {} }) => {
     const [id, setId] = useState(initialData.id || null); // Auto-incremented, no input field
     const [author, setAuthor] = useState(initialData.author || ''); // New field for author
-  const [title, setTitle] = useState(initialData.title || "");
-  const [content, setContent] = useState(initialData.content || "");
-  const [cover, setCover] = useState(initialData.cover || "");
+    const [title, setTitle] = useState(initialData.title || '');
+    const [content, setContent] = useState(initialData.content || '');
+    const [cover, setCover] = useState(initialData.cover || '');
     const [date, setDate] = useState(initialData.date || new Date().toISOString().slice(0, 10)); // Default to today
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!author || !title || !content || !cover) {
-      alert("All fields are required!");
-      return;
-    }
-    onSubmit({ id, author, title, content, cover, date });
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!author || !title || !content || !cover) {
+            alert('All fields are required!');
+            return;
+        }
+        onSubmit({ id, author, title, content, cover, date });
+    };
 
-  return (
-    <form onSubmit={handleSubmit} className="container mx-auto max-w-lg">
+    return (
+        <form onSubmit={handleSubmit} className="container mx-auto max-w-lg">
             <div className="mb-4">
                 <label className="block text-sm font-bold mb-2">Author</label>
                 <input
@@ -28,32 +28,32 @@ const PostForm = ({ onSubmit, initialData = {} }) => {
                     className="w-full border rounded p-2"
                 />
             </div>
-      <div className="mb-4">
-        <label className="block text-sm font-bold mb-2">Title</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="w-full border rounded p-2"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-sm font-bold mb-2">Content</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="w-full border rounded p-2"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-sm font-bold mb-2">Cover Image URL</label>
-        <input
-          type="text"
-          value={cover}
-          onChange={(e) => setCover(e.target.value)}
-          className="w-full border rounded p-2"
-        />
-      </div>
+            <div className="mb-4">
+                <label className="block text-sm font-bold mb-2">Title</label>
+                <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    className="w-full border rounded p-2"
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-sm font-bold mb-2">Content</label>
+                <textarea
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    className="w-full border rounded p-2"
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-sm font-bold mb-2">Cover Image URL</label>
+                <input
+                    type="text"
+                    value={cover}
+                    onChange={(e) => setCover(e.target.value)}
+                    className="w-full border rounded p-2"
+                />
+            </div>
             <div className="mb-4">
                 <label className="block text-sm font-bold mb-2">Date</label>
                 <input
@@ -63,14 +63,11 @@ const PostForm = ({ onSubmit, initialData = {} }) => {
                     className="w-full border rounded p-2"
                 />
             </div>
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Submit
-      </button>
-    </form>
-  );
+            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+                Submit
+            </button>
+        </form>
+    );
 };
 
 export default PostForm;
