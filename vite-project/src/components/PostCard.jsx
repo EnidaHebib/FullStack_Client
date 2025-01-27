@@ -1,22 +1,27 @@
 // import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const PostCard = ({ post, onUpdate, onDelete }) => {
-  console.log(post);
+const PostCard = ({ post, onDelete, setPosts }) => {
+  console.log("post: ", post);
+  const { id, author, title, content, cover } = post;
   // Handle user update
   const handleUpdate = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/posts/${id}`, {
+      const newCard = await axios.put(`http://localhost:3000/posts/${id}`, {
         author: author,
         title: title,
         content: content,
         cover: cover,
       });
-      setForm({ author: "", title: "", content: "", cover: "" });
-      setIsUpdating(false);
-      fetchUsers();
+      console.log(newCard);
+
+      // setForm({ author: "", title: "", content: "", cover: "" });
+      // setIsUpdating(false);
+      //this needs to be imported
+      // fetchUsers();
     } catch (error) {
       console.error("Error updating user:", error);
     }
@@ -24,8 +29,10 @@ const PostCard = ({ post, onUpdate, onDelete }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.onDelete(`http://localhost:3000/posts/${id}`);
-      fetchUsers(); // Refresh the user list
+      await axios.delete(`http://localhost:3000/posts/${id}`);
+      fetch("http://localhost:3000/posts")
+        .then((res) => res.json())
+        .then((data) => setPosts(data));
     } catch (error) {
       console.error("Error deleting user:", error);
     }

@@ -16,7 +16,7 @@ const Homepage = () => {
         Travel Blog
       </h1>
       <div className="flex flex-wrap">
-        <PostList posts={posts} />
+        <PostList posts={posts} setPosts={setPosts} />
       </div>
     </div>
   );
