@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import PostList from "../components/PostList";
+import React, { useEffect, useState } from "react";
+import PostList from "../components/PostList";
 
 const Homepage = () => {
   const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+    fetch("http://localhost:3000/posts")
+      .then((res) => res.json())
+      .then((data) => setPosts(data));
+  }, []);
   useEffect(() => {
     fetch("http://localhost:3000/posts")
       .then((res) => res.json())
