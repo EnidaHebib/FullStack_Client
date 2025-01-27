@@ -6,7 +6,6 @@ import PostPage from "./pages/PostPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./index.css"; // <-- Import Tailwind CSS here
-console.log("hello");
 
 const App = () => {
   return (

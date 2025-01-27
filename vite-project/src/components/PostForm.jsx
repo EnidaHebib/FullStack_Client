@@ -25,19 +25,13 @@ const PostForm = ({ onSubmit, initialData = {} }) => {
       content: content,
       cover: cover,
     });
-    // onSubmit({ id, author, title, content, cover, date });
-    navigate(-1);
+
+    navigate("/");
   };
 
   return (
     <form onSubmit={handleSubmit} className="container mx-auto max-w-lg">
-      {/* <div className="mb-4">
-        <label className="block text-sm font-bold mb-2">ID</label>
-        <div className="w-full border rounded p-2 bg-gray-100">
-          {id || "Auto-generated"}
-        </div>
-      </div> */}
-      <div className="mb-4">
+      <div className="mb-12">
         <label className="block text-sm font-bold mb-2">Author</label>
         <input
           type="text"
@@ -46,7 +40,7 @@ const PostForm = ({ onSubmit, initialData = {} }) => {
           className="w-full border rounded p-2"
         />
       </div>
-      <div className="mb-4">
+      <div className="mb-12">
         <label className="block text-sm font-bold mb-2">Title</label>
         <input
           type="text"
